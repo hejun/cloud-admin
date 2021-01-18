@@ -7,3 +7,10 @@ export function obtainToken(username: string, password: string) {
     password: password
   })
 }
+
+export function refreshToken(refreshToken: string) {
+  return AxiosBuilder.post('/auth/oauth/token', {
+    grant_type: 'refresh_token',
+    refresh_token: refreshToken
+  })
+}
