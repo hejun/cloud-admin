@@ -6,7 +6,7 @@ const auth: AxiosBasicCredentials = {
 }
 
 const config: AxiosRequestConfig = {
-  baseURL: import.meta.env.DEV ? 'http://localhost:8080' : 'http://localhost:1234',
+  baseURL: import.meta.env.DEV ? 'http://localhost:8080' : '',
   auth: auth
 }
 
