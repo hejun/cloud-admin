@@ -2,8 +2,13 @@
   <router-view/>
 </template>
 
-<script setup lang="ts">
-import {provide} from 'vue'
+<script lang="ts">
+import {defineComponent, provide} from 'vue'
 
-provide('msg', 'Hello World!')
+export default defineComponent({
+  name: 'App',
+  setup() {
+    provide('msg', 'Hello World!')
+  }
+})
 </script>

@@ -4,10 +4,19 @@
   </div>
 </template>
 
-<script setup lang="ts">
-import {inject} from 'vue'
+<script lang="ts">
+import {defineComponent, inject} from 'vue'
 
-const msg = inject('msg')
+export default defineComponent({
+  name: 'Home',
+  setup() {
+    const msg = inject('msg')
+
+    return {
+      msg
+    }
+  }
+})
 </script>
 
 <style scoped lang="less">
