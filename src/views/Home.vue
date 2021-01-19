@@ -1,19 +1,21 @@
 <template>
   <div class="home">
-    {{ msg }}
+    {{ token }}
   </div>
 </template>
 
 <script lang="ts">
-import {defineComponent, inject} from 'vue'
+import {defineComponent} from 'vue'
+import {useStore} from "../store"
 
 export default defineComponent({
   name: 'Home',
   setup() {
-    const msg = inject('msg')
+    const store = useStore()
+    let token = store.state.token
 
     return {
-      msg
+      token
     }
   }
 })
