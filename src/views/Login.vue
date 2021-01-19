@@ -17,7 +17,7 @@ export default defineComponent({
       accessToken: 'accessToken',
       tokenType: 'tokenType',
       refreshToken: 'refreshToken',
-      expiresIn: 0,
+      expiresAt: 0,
       scope: 'scope'
     }
     const updateToken = () => {

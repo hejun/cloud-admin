@@ -14,7 +14,7 @@ export const store = createStore<State>({
       accessToken: '',
       tokenType: '',
       refreshToken: '',
-      expiresIn: 0,
+      expiresAt: 0,
       scope: ''
     }
   },
