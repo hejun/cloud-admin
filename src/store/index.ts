@@ -1,4 +1,4 @@
-import {InjectionKey} from 'vue'
+import {computed, InjectionKey} from 'vue'
 import {createStore, Store, useStore as baseUseStore} from 'vuex'
 import Token from "../assets/vo/Token"
 
@@ -16,6 +16,11 @@ export const store = createStore<State>({
       refreshToken: '',
       expiresAt: 0,
       scope: ''
+    }
+  },
+  getters: {
+    authorized(state: State) {
+      return computed(() => state.token && state.token.expiresAt > (new Date().getTime() + 5000))
     }
   },
   mutations: {
