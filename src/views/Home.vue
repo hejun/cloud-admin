@@ -1,21 +1,19 @@
 <template>
   <div class="home">
-    {{ token }}
+    <button type="button" @click="queryUser">queryUser</button>
   </div>
 </template>
 
 <script lang="ts">
 import {defineComponent} from 'vue'
-import {useStore} from "../store"
+import {userList} from "../assets/api/Uac"
 
 export default defineComponent({
   name: 'Home',
   setup() {
-    const store = useStore()
-    let token = store.state.token
-
+    const queryUser = () => userList()
     return {
-      token
+      queryUser
     }
   }
 })

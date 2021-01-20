@@ -1,31 +1,37 @@
 <template>
-  <button type="button" @click="updateToken">更新Token</button>
+  <div class="login">
+    <div>
+      <input type="text" v-model="username">
+    </div>
+    <div>
+      <input type="password" v-model="password">
+    </div>
+    <div>
+      <button type="button" @click="login">登录</button>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
-import {defineComponent} from 'vue'
-import {useRouter} from "vue-router"
+import {defineComponent, ref} from 'vue'
 import {useStore} from "../store"
-import Token from "../assets/vo/Token"
+import {obtainToken} from "../assets/api/Auth"
 
 export default defineComponent({
   name: "Login",
   setup() {
-    const router = useRouter()
     const store = useStore()
-    let token: Token = {
-      accessToken: 'accessToken',
-      tokenType: 'tokenType',
-      refreshToken: 'refreshToken',
-      expiresAt: 0,
-      scope: 'scope'
-    }
-    const updateToken = () => {
-      store.dispatch('updateToken', token)
-      router.replace('/')
-    }
+
+    const username = ref('admin')
+    const password = ref('1234')
+    const login = () => obtainToken(username.value, password.value)
+      .then(token => store.dispatch('updateToken', token))
+      .catch(error => console.log(error))
+
     return {
-      updateToken
+      username,
+      password,
+      login
     }
   }
 })
